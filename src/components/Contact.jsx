@@ -77,7 +77,7 @@ export default function Contact() {
                   {
                     icon: Phone,
                     label: "Phone",
-                    value: "+91 00000 00000",
+                    value: "+91 703 498 8630",
                   },
                   {
                     icon: MapPin,
