@@ -1,6 +1,6 @@
-# Edu Seek
+# EduSeek
 
-A modern, futuristic website for Edu Seek — a new kind of learning home that
+A modern, futuristic website for EduSeek — a new kind of learning home that
 helps every child discover real-world skills, confidence, and creativity
 beyond the textbook.
 

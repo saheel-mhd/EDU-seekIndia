@@ -61,6 +61,8 @@ body {
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 255, 255, 0.12);
+    /* Isolate paint so hover repaints don't invalidate the page. */
+    contain: layout paint style;
   }
 
   .glass-dark {
@@ -72,6 +74,7 @@ body {
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    contain: layout paint style;
   }
 
   .text-gradient {
@@ -115,6 +118,10 @@ body {
 
   .section {
     @apply relative py-24 md:py-32;
+    /* Skip rendering work for offscreen sections. Hero (no .section class)
+       stays hot above the fold; Vision opts out by not using this class. */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
   }
 
   .section-title {
@@ -145,17 +152,32 @@ body {
     );
   }
 
-  /* Blob */
+  /* Blob — promoted to its own GPU layer so moving it costs a composite,
+     not a repaint of the expensive blur. */
   .blob {
     filter: blur(80px);
     opacity: 0.55;
     border-radius: 9999px;
     pointer-events: none;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .card-hover {
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
       box-shadow 0.4s ease, border-color 0.4s ease;
+    contain: layout paint style;
+  }
+
+  /* GPU-layer hint for always-running transform animations.
+     Note: we deliberately do NOT set `transform: translateZ(0)` here
+     because it would overwrite any sibling Tailwind translate utilities
+     on the same element. `will-change` alone is enough to hint the
+     compositor to promote the element. */
+  .will-animate {
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .card-hover:hover {
     transform: translateY(-6px);

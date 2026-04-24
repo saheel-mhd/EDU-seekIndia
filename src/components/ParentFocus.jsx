@@ -14,7 +14,7 @@ const POINTS = [
     icon: Eye,
     title: "Your child will be seen",
     body:
-      "Not as a roll number or a rank — but as a person with a story, a style of learning, and strengths waiting to emerge.",
+      "Not as a roll number or a rank but as a person with a story, a style of learning, and strengths waiting to emerge.",
   },
   {
     icon: Smile,
@@ -32,7 +32,7 @@ const POINTS = [
     icon: ShieldCheck,
     title: "Guided, with care",
     body:
-      "Mentors stay close — patient, warm, and honest. You will always know how your child is growing, and why.",
+      "Mentors stay close patient, warm, and honest. You will always know how your child is growing, and why.",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function ParentFocus() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="section-sub">
-                Edu Seek is built for parents who want more than marks —
+                EduSeek is built for parents who want more than marksheets and report cards,
                 parents who want their child to be prepared for a life that
                 changes quickly, questions often, and rewards those who can
                 think, connect, and create.
@@ -76,11 +76,11 @@ export default function ParentFocus() {
                 />
                 <p className="mt-4 font-display text-lg leading-relaxed text-brand-light md:text-xl">
                   "We do not promise miracles. We promise to listen, guide,
-                  and walk alongside your child — so they grow into someone
+                  and walk alongside your child so they grow into someone
                   they are proud to be."
                 </p>
                 <p className="mt-5 text-xs uppercase tracking-[0.24em] text-brand-light/50">
-                  — A note from the Edu Seek team
+                  — A note from the EduSeek team
                 </p>
               </div>
             </Reveal>

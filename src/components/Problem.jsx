@@ -10,7 +10,7 @@ import Reveal from "./primitives/Reveal.jsx";
 const ISSUES = [
   {
     icon: Utensils,
-    title: "Spoon-feeding over thinking",
+    title: "Spoon feeding over thinking",
     body:
       "Ready-made answers replace the joy of discovering. Children remember lessons, but rarely the reason behind them.",
     accent: "#EB4331",
@@ -19,21 +19,21 @@ const ISSUES = [
     icon: BrainCog,
     title: "Memorization without understanding",
     body:
-      "Facts are repeated for a test, then quietly forgotten. Deep understanding — the kind that lasts a lifetime — is left behind.",
+      "Facts are repeated for a test, then quietly forgotten. Deep understanding the kind that lasts a lifetime — is left behind.",
     accent: "#F8BF40",
   },
   {
     icon: UserRoundSearch,
     title: "Individual talents stay hidden",
     body:
-      "A classroom of thirty becomes one lesson for all. The artist, the builder, the storyteller — their spark is rarely noticed.",
+      "A classroom of thirty becomes one lesson for all. The artist, the builder, the storyteller their spark is rarely noticed.",
     accent: "#516ED6",
   },
   {
     icon: Workflow,
     title: "Little preparation for the real world",
     body:
-      "Communication, leadership, and problem-solving quietly go untaught, even though life outside school demands them every day.",
+      "Communication, leadership, and problem solving quietly go untaught, even though life outside school demands them every day.",
     accent: "#9B7DF2",
   },
 ];
@@ -51,14 +51,14 @@ export default function Problem() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="section-title mt-5">
-              Traditional classrooms teach a lot —{" "}
+              Traditional classrooms teach a lot{" "}
               <span className="text-gradient">but miss a lot, too.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="section-sub mx-auto">
               We don't believe schools are the enemy. We believe there are
-              quiet gaps in the way children are taught — and Edu Seek exists
+              quiet gaps in the way children are taught and EduSeek exists
               to gently fill them in.
             </p>
           </Reveal>
@@ -121,8 +121,8 @@ export default function Problem() {
         <Reveal delay={0.3}>
           <div className="glass-dark mx-auto mt-14 max-w-3xl rounded-2xl border border-white/10 px-6 py-5 text-center">
             <p className="text-sm leading-relaxed text-brand-light/80 md:text-base">
-              <span className="text-brand-yellow">Edu Seek adds</span> what
-              traditional systems often miss — while respecting the
+              <span className="text-brand-yellow">EduSeek adds</span> what
+              traditional systems often miss while respecting the
               foundations they build.
             </p>
           </div>

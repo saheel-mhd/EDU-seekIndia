@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useTime, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, Compass } from "lucide-react";
 import AnimatedBackground from "./primitives/AnimatedBackground.jsx";
 
@@ -12,6 +12,47 @@ const orbitIcons = [
   { label: "Critical thinking", angle: 270 },
   { label: "Collaboration", angle: 315 },
 ];
+
+const ORBIT_RADIUS = 46; // percent of container
+const ORBIT_DURATION_MS = 60000; // one full loop every 60s
+
+/**
+ * A single chip that travels around the orbit WITHOUT spinning on itself.
+ * We animate left/top via Framer motion values derived from `useTime` — no
+ * `rotate` transform is ever applied, so the label stays perfectly upright.
+ */
+function OrbitChip({ label, angle, index }) {
+  const time = useTime();
+  const left = useTransform(time, (t) => {
+    const a = angle + (t / ORBIT_DURATION_MS) * 360;
+    return `${50 + ORBIT_RADIUS * Math.cos((a * Math.PI) / 180)}%`;
+  });
+  const top = useTransform(time, (t) => {
+    const a = angle + (t / ORBIT_DURATION_MS) * 360;
+    return `${50 + ORBIT_RADIUS * Math.sin((a * Math.PI) / 180)}%`;
+  });
+
+  const shadow =
+    index % 3 === 0
+      ? "0 0 20px rgba(81,110,214,0.5)"
+      : index % 3 === 1
+      ? "0 0 20px rgba(248,191,64,0.5)"
+      : "0 0 20px rgba(235,67,49,0.45)";
+
+  return (
+    <motion.div
+      style={{ left, top }}
+      className="absolute -translate-x-1/2 -translate-y-1/2"
+    >
+      <div
+        className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-wider text-brand-light/80 backdrop-blur-md"
+        style={{ boxShadow: shadow }}
+      >
+        {label}
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -64,9 +105,9 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.35 }}
               className="mt-6 max-w-2xl text-base leading-relaxed text-brand-light/70 sm:text-lg"
             >
-              Edu Seek is an educational institution built to help young
+              EduSeek is an educational institution built to help young
               learners discover their natural strengths and build real-world
-              skills for life — not just memorize answers for a paper.
+              skills for life, not just memorize answers for a paper.
             </motion.p>
 
             <motion.div
@@ -117,7 +158,7 @@ export default function Hero() {
           <div className="relative lg:col-span-5">
             <div className="relative mx-auto aspect-square w-full max-w-[460px]">
               <motion.div
-                className="absolute inset-0 rounded-full border border-white/10"
+                className="will-animate absolute inset-0 rounded-full border border-white/10"
                 animate={{ rotate: 360 }}
                 transition={{
                   duration: 50,
@@ -126,7 +167,7 @@ export default function Hero() {
                 }}
               />
               <motion.div
-                className="absolute inset-8 rounded-full border border-white/10"
+                className="will-animate absolute inset-8 rounded-full border border-white/10"
                 animate={{ rotate: -360 }}
                 transition={{
                   duration: 40,
@@ -135,7 +176,7 @@ export default function Hero() {
                 }}
               />
               <motion.div
-                className="absolute inset-16 rounded-full border border-dashed border-white/20"
+                className="will-animate absolute inset-16 rounded-full border border-dashed border-white/20"
                 animate={{ rotate: 360 }}
                 transition={{
                   duration: 70,
@@ -144,68 +185,39 @@ export default function Hero() {
                 }}
               />
 
-              {/* Center orb */}
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.2 }}
-                className="glass absolute left-1/2 top-1/2 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full text-center shadow-glow"
-              >
-                <span className="font-display text-xs uppercase tracking-[0.24em] text-brand-light/60">
-                  Edu Seek
-                </span>
-                <span className="mt-1 font-display text-lg font-bold text-brand-light">
-                  Real-world
-                </span>
-                <span className="font-display text-lg font-bold text-brand-yellow">
-                  Learning
-                </span>
-              </motion.div>
+              {/* Center orb — static wrapper owns centering so Framer's
+                  inline transform (scale) doesn't clobber translate(-50%,-50%). */}
+              <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.2 }}
+                  className="glass pointer-events-auto flex h-40 w-40 flex-col items-center justify-center rounded-full text-center shadow-glow"
+                >
+                  <span className="font-display text-xs uppercase tracking-[0.24em] text-brand-light/60">
+                    EduSeek
+                  </span>
+                  <span className="mt-1 font-display text-lg font-bold text-brand-light">
+                    Real-world
+                  </span>
+                  <span className="font-display text-lg font-bold text-brand-yellow">
+                    Learning
+                  </span>
+                </motion.div>
+              </div>
 
-              {/* Orbit skill chips */}
-              <motion.div
-                className="absolute inset-0"
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 60,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              >
-                {orbitIcons.map((s, i) => {
-                  const rad = (s.angle * Math.PI) / 180;
-                  const radius = 46; // percent
-                  const x = 50 + radius * Math.cos(rad);
-                  const y = 50 + radius * Math.sin(rad);
-                  return (
-                    <motion.div
-                      key={s.label}
-                      className="absolute -translate-x-1/2 -translate-y-1/2"
-                      style={{ left: `${x}%`, top: `${y}%` }}
-                      animate={{ rotate: -360 }}
-                      transition={{
-                        duration: 60,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                    >
-                      <div
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-wider text-brand-light/80 backdrop-blur-md"
-                        style={{
-                          boxShadow:
-                            i % 3 === 0
-                              ? "0 0 20px rgba(81,110,214,0.5)"
-                              : i % 3 === 1
-                              ? "0 0 20px rgba(248,191,64,0.5)"
-                              : "0 0 20px rgba(235,67,49,0.45)",
-                        }}
-                      >
-                        {s.label}
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
+              {/* Orbit skill chips — each chip's position travels around
+                  the ring; chips never rotate on themselves. */}
+              <div className="absolute inset-0">
+                {orbitIcons.map((s, i) => (
+                  <OrbitChip
+                    key={s.label}
+                    label={s.label}
+                    angle={s.angle}
+                    index={i}
+                  />
+                ))}
+              </div>
 
               {/* Glowing accents */}
               <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-brand-yellow/20 blur-3xl" />

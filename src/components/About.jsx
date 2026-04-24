@@ -25,7 +25,7 @@ export default function About() {
 
             <Reveal direction="up" delay={0.2}>
               <p className="section-sub">
-                Edu Seek began as a promise between schoolmates — friends who
+                EduSeek began as a promise between schoolmates, friends who
                 were rarely called the "top of the class," yet understood
                 something the rankings never measured. They learned that
                 grades do not define potential, and the marks on a report
@@ -36,9 +36,9 @@ export default function About() {
             <Reveal direction="up" delay={0.3}>
               <p className="mt-5 text-base leading-relaxed text-brand-light/70">
                 Years of hard work, late nights, and real-world building
-                taught them what schools often missed — that curiosity,
+                taught them what schools often missed that curiosity,
                 courage, and practical skill matter more than any single
-                answer on an exam. Edu Seek is their way of giving the next
+                answer on an exam. EduSeek is their way of giving the next
                 generation what they had to find on their own.
               </p>
             </Reveal>
@@ -77,21 +77,21 @@ export default function About() {
                   icon: GraduationCap,
                   title: "Grades never told the full story",
                   body:
-                    "Report cards measured a slice of memory — not imagination, empathy, or grit. We never forgot that.",
+                    "Report cards measured a slice of memory not imagination, empathy, or grit. We never forgot that.",
                   color: "#516ED6",
                 },
                 {
                   icon: Lightbulb,
                   title: "Real learning lived outside the classroom",
                   body:
-                    "We discovered our strengths by building, trying, failing, and trying again. That path now shapes Edu Seek.",
+                    "We discovered our strengths by building, trying, failing, and trying again. That path now shapes EduSeek.",
                   color: "#F8BF40",
                 },
                 {
                   icon: HeartHandshake,
                   title: "A promise for the next generation",
                   body:
-                    "Children today deserve guides who believe in them early — not only when results arrive.",
+                    "Children today deserve guides who believe in them early not only when results arrive.",
                   color: "#EB4331",
                 },
               ].map((c, i) => {

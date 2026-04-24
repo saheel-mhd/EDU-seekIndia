@@ -65,7 +65,7 @@ export default function Vision() {
 
           <Reveal delay={0.3}>
             <p className="mx-auto mt-10 max-w-2xl text-base leading-relaxed text-brand-light/75 md:text-lg">
-              We see a future where every child steps out with confidence —
+              We see a future where every child steps out with confidence,
               able to speak, think, build, and belong. A future where learning
               feels alive, and where schools no longer ask children to fit a
               mold, but help them shape one of their own.

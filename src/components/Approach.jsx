@@ -14,7 +14,7 @@ const PILLARS = [
     icon: Telescope,
     title: "Skill Discovery",
     body:
-      "We begin by understanding the child — observing curiosities, listening carefully, and noticing the sparks that others miss.",
+      "We begin by understanding the child observing curiosities, listening carefully, and noticing the sparks that others miss.",
     accent: "#516ED6",
   },
   {
@@ -28,14 +28,14 @@ const PILLARS = [
     icon: Users,
     title: "Mentorship",
     body:
-      "Every young learner is paired with mentors who guide, listen, and challenge them gently — not judge them by grades alone.",
+      "Every young learner is paired with mentors who guide, listen, and challenge them gently not judge them by grades alone.",
     accent: "#EB4331",
   },
   {
     icon: Rocket,
     title: "Real-world Projects",
     body:
-      "Students build things that matter — from ideas they care about — so learning feels real, rewarding, and connected to life.",
+      "Students build things that matter from ideas they care about so learning feels real, rewarding, and connected to life.",
     accent: "#9B7DF2",
   },
   {
@@ -49,7 +49,7 @@ const PILLARS = [
     icon: Route,
     title: "Personalized Growth Paths",
     body:
-      "No two children learn the same way. We shape each journey around strengths, interests, and pace — never a one-size plan.",
+      "No two children learn the same way. We shape each journey around strengths, interests, and pace never a one-size plan.",
     accent: "#F59E0B",
   },
 ];
@@ -77,7 +77,7 @@ export default function Approach() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="section-sub mx-auto">
-              Every child at Edu Seek is met with warmth, structure, and a
+              Every child at EduSeek is met with warmth, structure, and a
               clear path. Here's how we help them grow into their fullest,
               most confident selves.
             </p>

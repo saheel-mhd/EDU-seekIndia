@@ -34,8 +34,8 @@ export default function Footer() {
           <div className="lg:col-span-5">
             <Logo size="sm" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-brand-light/70">
-              Edu Seek is a new kind of learning home — built to help every
-              child discover who they are, build real-world skills, and step
+              EduSeek is a new kind of learning home, built to help every
+              child discover who they are, build real world skills, and step
               into life with confidence and curiosity.
             </p>
 
@@ -97,9 +97,9 @@ export default function Footer() {
                 Reach Us
               </div>
               <ul className="mt-4 space-y-2.5 text-sm text-brand-light/80">
-                <li>hello@eduseek.in</li>
+                <li>info@eduseekindia.com</li>
                 <li>+91 00000 00000</li>
-                <li>Edu Seek Studio, India</li>
+                <li>EduSeek Studio, India</li>
               </ul>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default function Footer() {
         <div className="divider-line mt-14" />
 
         <div className="mt-6 flex flex-col items-start justify-between gap-3 text-xs text-brand-light/50 sm:flex-row sm:items-center">
-          <div>© {year} Edu Seek. Learning beyond textbooks.</div>
+          <div>© {year} EduSeek. Learning beyond textbooks.</div>
           <div className="flex items-center gap-5">
             <a
               href="#"

@@ -14,7 +14,7 @@ const STEPS = [
     icon: Ear,
     title: "Understand the child",
     body:
-      "We begin with conversations — with the student, with parents, with teachers who know them. We listen before we teach.",
+      "We begin with conversations with the student, with parents, with teachers who know them. We listen before we teach.",
     accent: "#516ED6",
   },
   {
@@ -22,7 +22,7 @@ const STEPS = [
     icon: Compass,
     title: "Discover strengths",
     body:
-      "Through activities, projects, and play, we uncover what the child naturally gravitates toward — and where they shine.",
+      "Through activities, projects, and play, we uncover what the child naturally gravitates toward and where they shine.",
     accent: "#F8BF40",
   },
   {
@@ -30,7 +30,7 @@ const STEPS = [
     icon: Hammer,
     title: "Build skills",
     body:
-      "We pair each strength with steady practice — communication, leadership, creativity, technology, and more.",
+      "We pair each strength with steady practice communication, leadership, creativity, technology, and more.",
     accent: "#EB4331",
   },
   {
@@ -38,7 +38,7 @@ const STEPS = [
     icon: Rocket,
     title: "Apply learning",
     body:
-      "Students put skills into action through real-world projects. Ideas turn into work that matters — to them and to others.",
+      "Students put skills into action through real-world projects. Ideas turn into work that matters to them and to others.",
     accent: "#9B7DF2",
   },
   {
@@ -46,7 +46,7 @@ const STEPS = [
     icon: Award,
     title: "Showcase growth",
     body:
-      "Progress is celebrated openly — through portfolios, presentations, and moments that show parents how far their child has grown.",
+      "Progress is celebrated openly through portfolios, presentations, and moments that show parents how far their child has grown.",
     accent: "#2FB673",
   },
 ];
@@ -64,7 +64,7 @@ export default function Journey() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="section-title mt-5">
-              A thoughtful five-step path from{" "}
+              A thoughtful five step path from{" "}
               <span className="text-gradient">who they are to who they become.</span>
             </h2>
           </Reveal>

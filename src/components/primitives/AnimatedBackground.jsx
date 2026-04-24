@@ -40,7 +40,7 @@ export default function AnimatedBackground({ variant = "hero" }) {
 
       {/* Slow-rotating ring */}
       <motion.svg
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20"
+        className="will-animate absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20"
         width="900"
         height="900"
         viewBox="0 0 900 900"

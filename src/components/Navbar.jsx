@@ -18,21 +18,43 @@ export default function Navbar() {
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 20);
-      const ids = LINKS.map((l) => l.href.replace("#", ""));
+    const ids = LINKS.map((l) => l.href.replace("#", ""));
+    let ticking = false;
+    let lastScrolled = false;
+    let lastActive = "";
+
+    const run = () => {
+      const y = window.scrollY;
+      const isScrolled = y > 20;
+      if (isScrolled !== lastScrolled) {
+        lastScrolled = isScrolled;
+        setScrolled(isScrolled);
+      }
+
+      let next = "";
       for (const id of ids) {
         const el = document.getElementById(id);
         if (!el) continue;
         const rect = el.getBoundingClientRect();
         if (rect.top <= 140 && rect.bottom >= 140) {
-          setActive(`#${id}`);
-          return;
+          next = `#${id}`;
+          break;
         }
       }
-      setActive("");
+      if (next !== lastActive) {
+        lastActive = next;
+        setActive(next);
+      }
+      ticking = false;
     };
-    onScroll();
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(run);
+    };
+
+    run();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -67,7 +89,7 @@ export default function Navbar() {
             <a
               href="#top"
               className="rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow"
-              aria-label="Edu Seek home"
+              aria-label="EduSeek home"
             >
               <Logo size="sm" />
             </a>

@@ -61,7 +61,7 @@ export default function Contact() {
             <Reveal delay={0.2}>
               <p className="section-sub">
                 Tell us a little about your child. We will reach out to
-                understand them better and share how Edu Seek can support
+                understand them better and share how EduSeek can support
                 their growth.
               </p>
             </Reveal>
@@ -72,7 +72,7 @@ export default function Contact() {
                   {
                     icon: Mail,
                     label: "Email",
-                    value: "hello@eduseek.in",
+                    value: "info@eduseekindia.com",
                   },
                   {
                     icon: Phone,
@@ -82,7 +82,7 @@ export default function Contact() {
                   {
                     icon: MapPin,
                     label: "Campus",
-                    value: "Edu Seek Learning Studio, India",
+                    value: "EduSeek Studio, India",
                   },
                 ].map((c) => {
                   const Icon = c.icon;

@@ -38,7 +38,7 @@ const SKILLS = [
   },
   {
     icon: Puzzle,
-    name: "Problem-solving",
+    name: "Problem solving",
     tagline: "Break big challenges into small, clear steps.",
     accent: "#2FB673",
   },
@@ -75,7 +75,7 @@ export default function Skills() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="section-title mt-5">
-              Eight real-world skills for a{" "}
+              Eight real world skills for a{" "}
               <span className="text-gradient">confident life ahead.</span>
             </h2>
           </Reveal>
