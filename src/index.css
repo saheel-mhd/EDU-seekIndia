@@ -210,6 +210,18 @@ body {
   }
 }
 
+/* Marquee keyframes — declared here (not in tailwind.config) so the
+   CSS is always emitted, even though we trigger the animation via an
+   inline `style` rather than an `animate-*` utility class. */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 /* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   *,

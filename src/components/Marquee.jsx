@@ -7,7 +7,7 @@
 const WORDS = [
   { label: "Curiosity", color: "text-gradient" },
   { label: "Creativity", color: "text-brand-light" },
-  { label: "Confidence", color: "text-brand-light" },
+  { label: "Confidence", color: "text-gradient" },
   { label: "Communication", color: "text-brand-light" },
   { label: "Courage", color: "text-brand-red" },
   { label: "Collaboration", color: "text-gradient" },
