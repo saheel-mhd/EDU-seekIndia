@@ -82,7 +82,7 @@ export default function Contact() {
                   {
                     icon: MapPin,
                     label: "Campus",
-                    value: "EduSeek Studio, India",
+                    value: "EduSeek Institute, India",
                   },
                 ].map((c) => {
                   const Icon = c.icon;

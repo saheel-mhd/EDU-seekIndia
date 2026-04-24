@@ -99,7 +99,7 @@ export default function Footer() {
               <ul className="mt-4 space-y-2.5 text-sm text-brand-light/80">
                 <li>info@eduseekindia.com</li>
                 <li>+91 703 498 8630</li>
-                <li>EduSeek Studio, India</li>
+                <li>EduSeek Institute, India</li>
               </ul>
             </div>
           </div>
