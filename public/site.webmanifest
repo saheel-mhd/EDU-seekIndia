@@ -1,6 +1,16 @@
 {
   "name": "EduSEEK India",
   "short_name": "EduSEEK",
+  "description": "Skill discovery school for every child — learning beyond textbooks.",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "en-IN",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#231C1E",
+  "background_color": "#0f0c0d",
+  "categories": ["education", "kids", "lifestyle"],
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -13,9 +23,18 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }

@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no" />
+  <!-- Lock the email to a single (dark) theme.  Clients that respect
+       these meta tags (Apple Mail, iOS Mail, Outlook 365) will stop
+       auto-adjusting the message when the OS is in light or dark mode. -->
+  <meta name="color-scheme" content="only dark" />
+  <meta name="supported-color-schemes" content="only dark" />
+  <title>Thank you for reaching out — EduSeek</title>
+
+  <!-- Web font (Apple Mail, Gmail web load this; Outlook ignores and falls back) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style type="text/css">
+    /* Universal client resets */
+    body, table, td, p, a, h1, h2, h3, h4 {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
+    img {
+      -ms-interpolation-mode: bicubic;
+      border: 0;
+      outline: none;
+      text-decoration: none;
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    a { text-decoration: none; }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+      background-color: #0f0c0d;
+      color: #F3F5ED;
+      font-family: 'Plus Jakarta Sans', 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Hover (best-effort — most webmails strip hover) */
+    .btn-primary:hover {
+      background-color: #f8c75a !important;
+    }
+    .btn-secondary:hover {
+      border-color: #F8BF40 !important;
+      color: #F8BF40 !important;
+    }
+    .social a:hover { opacity: 1 !important; }
+
+    /* Mobile responsive */
+    @media screen and (max-width: 620px) {
+      .container { width: 100% !important; }
+      .px-pad { padding-left: 24px !important; padding-right: 24px !important; }
+      .py-pad { padding-top: 36px !important; padding-bottom: 36px !important; }
+      .stack { display: block !important; width: 100% !important; max-width: 100% !important; padding: 0 0 14px 0 !important; }
+      .stack-last { padding-bottom: 0 !important; }
+      .h1 { font-size: 30px !important; line-height: 1.15 !important; }
+      .h2 { font-size: 20px !important; line-height: 1.3 !important; }
+      .body-text { font-size: 15px !important; line-height: 1.65 !important; }
+      .hide-on-mobile { display: none !important; }
+      .center-on-mobile { text-align: center !important; }
+      .btn-row { padding-left: 24px !important; padding-right: 24px !important; }
+    }
+
+    /* ------------------------------------------------------------
+       Lock theme regardless of device light/dark mode.
+       ------------------------------------------------------------ */
+
+    /* Apple Mail (iOS/macOS): force-stops the auto-darkening / lightening */
+    :root {
+      color-scheme: only dark;
+      supported-color-schemes: only dark;
+    }
+
+    /* Outlook for iOS/Android: overrides applied when the app injects
+       dark-mode CSS via [data-ogsc] / [data-ogsb] attributes. */
+    [data-ogsc] body, [data-ogsb] body,
+    [data-ogsc] .body-bg, [data-ogsb] .body-bg {
+      background-color: #0f0c0d !important;
+      color: #F3F5ED !important;
+    }
+    [data-ogsc] .card-bg, [data-ogsb] .card-bg {
+      background-color: #161112 !important;
+    }
+    [data-ogsc] .card-step, [data-ogsb] .card-step {
+      background-color: #1d1718 !important;
+    }
+    [data-ogsc] .card-quote, [data-ogsb] .card-quote {
+      background-color: #1a1416 !important;
+    }
+    [data-ogsc] .text-light, [data-ogsb] .text-light {
+      color: #F3F5ED !important;
+    }
+    [data-ogsc] .text-yellow, [data-ogsb] .text-yellow {
+      color: #F8BF40 !important;
+    }
+    [data-ogsc] .text-blue, [data-ogsb] .text-blue {
+      color: #516ED6 !important;
+    }
+    [data-ogsc] .text-red, [data-ogsb] .text-red {
+      color: #EB4331 !important;
+    }
+    [data-ogsc] .text-mute, [data-ogsb] .text-mute {
+      color: rgba(243,245,237,0.7) !important;
+    }
+
+    /* Gmail Android / iOS forced-dark fallback */
+    u + .body .gmail-fix,
+    u + .body-bg .gmail-fix { background-color: #0f0c0d !important; }
+
+    /* Outlook-specific: force fonts */
+  </style>
+
+  <!--[if mso]>
+  <style type="text/css">
+    body, table, td, a, p, h1, h2, h3 {
+      font-family: Arial, Helvetica, sans-serif !important;
+    }
+  </style>
+  <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG />
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+  </xml>
+  <![endif]-->
+</head>
+
+<body class="body-bg" bgcolor="#0f0c0d" style="margin:0; padding:0; background-color:#0f0c0d; color:#F3F5ED; font-family: 'Plus Jakarta Sans','Outfit','Helvetica Neue',Arial,sans-serif;">
+
+  <!-- Hidden preheader (shown in inbox preview, hidden in body) -->
+  <div style="display:none; font-size:1px; color:#0f0c0d; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+    Thank you for reaching out your child's skill discovery journey with EduSeek starts here.
+    &#847;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+  </div>
+
+  <!-- Outer wrapper — full-width, no edge padding so the email goes
+       edge-to-edge in every inbox (mobile + desktop). -->
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#0f0c0d" class="body-bg" style="background-color:#0f0c0d; padding:0; margin:0;">
+    <tr>
+      <td align="center" bgcolor="#0f0c0d" class="body-bg" style="padding:0; background-color:#0f0c0d;">
+
+        <!-- ====== TOP BRAND ACCENT STRIPE ====== -->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="container" style="width:100%; max-width:100%;">
+          <tr>
+            <td bgcolor="#516ED6" height="3" style="background-color:#516ED6; height:3px; line-height:3px; font-size:0;">&nbsp;</td>
+            <td bgcolor="#F8BF40" height="3" style="background-color:#F8BF40; height:3px; line-height:3px; font-size:0;">&nbsp;</td>
+            <td bgcolor="#EB4331" height="3" style="background-color:#EB4331; height:3px; line-height:3px; font-size:0;">&nbsp;</td>
+          </tr>
+        </table>
+
+        <!-- ====== MAIN CARD ====== -->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#161112" class="container card-bg" style="width:100%; max-width:100%; background-color:#161112;">
+
+          <!-- Header / Logo -->
+          <tr>
+            <td align="center" class="px-pad" style="padding:36px 40px 20px 40px;">
+              <!-- EduSeek wordmark, hosted on Cloudinary (HTTPS, CDN-cached). -->
+              <a href="https://eduseekindia.com" style="text-decoration:none;">
+                <img
+                  src="https://res.cloudinary.com/dzaws4mwh/image/upload/v1777100640/Screenshot_2026-04-24_150752_md3wcn.png"
+                  alt="EduSeek"
+                  width="160"
+                  height="64"
+                  style="display:block; width:160px; height:auto; max-width:160px; border:0; outline:none;"
+                />
+              </a>
+            </td>
+          </tr>
+
+          <!-- Hero / Title -->
+          <tr>
+            <td class="px-pad py-pad" style="padding:8px 48px 28px 48px;" align="left">
+              <p style="margin:0 0 14px 0; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#F8BF40; font-weight:600;">
+                A New Kind of Learning Home
+              </p>
+              <h1 class="h1" style="margin:0 0 18px 0; font-family:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif; font-size:36px; line-height:1.08; font-weight:800; letter-spacing:-0.01em; color:#F3F5ED;">
+                Thank you for reaching out,
+                <span style="color:#F8BF40;">{{name}}</span>.
+              </h1>
+              <p class="body-text" style="margin:0; font-size:16px; line-height:1.7; color:rgba(243,245,237,0.78); font-weight:400;">
+                We've received your enquiry and are excited to learn more about your child. A mentor from the EduSeek team will reach out personally to understand them better. their curiosities, their strengths, and what they love.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Divider line -->
+          <tr>
+            <td class="px-pad" style="padding:0 48px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td height="1" style="height:1px; line-height:1px; font-size:0; background-color:rgba(255,255,255,0.08); border-top:1px solid rgba(255,255,255,0.08);">&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- "What happens next" block -->
+          <tr>
+            <td class="px-pad" style="padding:32px 48px 8px 48px;" align="left">
+              <h2 class="h2" style="margin:0 0 6px 0; font-family:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif; font-size:22px; line-height:1.25; font-weight:700; color:#F3F5ED;">
+                Here's what happens next
+              </h2>
+              <p style="margin:0 0 22px 0; font-size:14px; line-height:1.6; color:rgba(243,245,237,0.65);">
+                A simple, thoughtful path built around your child.
+              </p>
+            </td>
+          </tr>
+
+          <!-- 3-step row (table cells stack on mobile via .stack) -->
+          <tr>
+            <td class="px-pad" style="padding:0 40px 8px 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <!-- Step 1 -->
+                  <td class="stack" valign="top" width="33.33%" style="padding:8px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#1d1718" class="card-step" style="background-color:#1d1718; border:1px solid rgba(81,110,214,0.25); border-radius:14px;">
+                      <tr>
+                        <td style="padding:18px;">
+                          <p style="margin:0 0 8px 0; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#516ED6; font-weight:700;">
+                            Step 01
+                          </p>
+                          <h3 style="margin:0 0 6px 0; font-size:15px; line-height:1.3; font-weight:700; color:#F3F5ED;">
+                            We listen
+                          </h3>
+                          <p style="margin:0; font-size:13px; line-height:1.55; color:rgba(243,245,237,0.7);">
+                            A short, warm conversation about your child.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+
+                  <!-- Step 2 -->
+                  <td class="stack" valign="top" width="33.33%" style="padding:8px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#1d1718" class="card-step" style="background-color:#1d1718; border:1px solid rgba(248,191,64,0.25); border-radius:14px;">
+                      <tr>
+                        <td style="padding:18px;">
+                          <p style="margin:0 0 8px 0; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#F8BF40; font-weight:700;">
+                            Step 02
+                          </p>
+                          <h3 style="margin:0 0 6px 0; font-size:15px; line-height:1.3; font-weight:700; color:#F3F5ED;">
+                            We discover
+                          </h3>
+                          <p style="margin:0; font-size:13px; line-height:1.55; color:rgba(243,245,237,0.7);">
+                            Hands on activities reveal natural strengths.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+
+                  <!-- Step 3 -->
+                  <td class="stack stack-last" valign="top" width="33.33%" style="padding:8px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#1d1718" class="card-step" style="background-color:#1d1718; border:1px solid rgba(235,67,49,0.25); border-radius:14px;">
+                      <tr>
+                        <td style="padding:18px;">
+                          <p style="margin:0 0 8px 0; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#EB4331; font-weight:700;">
+                            Step 03
+                          </p>
+                          <h3 style="margin:0 0 6px 0; font-size:15px; line-height:1.3; font-weight:700; color:#F3F5ED;">
+                            They grow
+                          </h3>
+                          <p style="margin:0; font-size:13px; line-height:1.55; color:rgba(243,245,237,0.7);">
+                            Real world skills, built steadily, with care.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+
+          <!-- CTA Button -->
+          <tr>
+            <td class="btn-row" align="left" style="padding:32px 48px 8px 48px;">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://eduseekindia.com" style="height:48px; v-text-anchor:middle; width:240px;" arcsize="50%" stroke="f" fillcolor="#F8BF40">
+                <w:anchorlock/>
+                <center style="color:#231C1E; font-family:Arial,sans-serif; font-size:15px; font-weight:700;">Visit EduSeek Online</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-- -->
+              <a class="btn-primary" href="https://eduseekindia.com" target="_blank" style="display:inline-block; background-color:#F8BF40; color:#231C1E; font-size:15px; font-weight:700; line-height:1; padding:16px 28px; border-radius:999px; font-family:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif; box-shadow:0 10px 24px rgba(248,191,64,0.25);">
+                Visit EduSeek Online &rarr;
+              </a>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- Inspirational quote -->
+          <tr>
+            <td class="px-pad" style="padding:36px 48px 8px 48px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#1a1416" class="card-quote" style="background-color:#1a1416; border-left:3px solid #F8BF40; border-radius:0 12px 12px 0;">
+                <tr>
+                  <td style="padding:20px 22px;">
+                    <p style="margin:0; font-size:15px; line-height:1.6; color:#F3F5ED; font-style:italic; font-weight:500;">
+                      "Education should prepare children for life, not just exams."
+                    </p>
+                    <p style="margin:10px 0 0 0; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(243,245,237,0.5); font-weight:600;">
+                      — The EduSeek team
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Sign-off -->
+          <tr>
+            <td class="px-pad" style="padding:30px 48px 40px 48px;" align="left">
+              <p style="margin:0 0 8px 0; font-size:15px; line-height:1.65; color:rgba(243,245,237,0.78);">
+                One of our executives will contact you regarding your enquiry shortly.
+              </p>
+              <p style="margin:0; font-size:15px; line-height:1.65; color:#F3F5ED; font-weight:600;">
+                Warmly,<br />
+                <span style="color:#F8BF40;">The EduSeek Team</span>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <!-- ====== FOOTER ====== -->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="container" style="width:100%; max-width:100%;">
+
+          <!-- Footer divider gradient stripe -->
+          <tr>
+            <td bgcolor="#516ED6" height="3" style="background-color:#516ED6; height:3px; line-height:3px; font-size:0;">&nbsp;</td>
+            <td bgcolor="#F8BF40" height="3" style="background-color:#F8BF40; height:3px; line-height:3px; font-size:0;">&nbsp;</td>
+            <td bgcolor="#EB4331" height="3" style="background-color:#EB4331; height:3px; line-height:3px; font-size:0;">&nbsp;</td>
+          </tr>
+        </table>
+
+        <!-- Footer info — all rows centered horizontally -->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="container" style="width:100%; max-width:100%;">
+          <tr>
+            <td class="px-pad" style="padding:28px 40px 8px 40px; text-align:center;" align="center">
+              <p style="margin:0 0 4px 0; font-size:14px; font-weight:700; color:#F3F5ED; text-align:center;">
+                EduSeek
+              </p>
+              <p style="margin:0 0 14px 0; font-size:12px; line-height:1.6; color:rgba(243,245,237,0.55); text-align:center;">
+                Learning beyond textbooks built for every child.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="px-pad" style="padding:0 40px 14px 40px; text-align:center;" align="center">
+              <p style="margin:0 0 4px 0; font-size:12px; line-height:1.6; color:rgba(243,245,237,0.7); text-align:center;">
+                <a href="mailto:info@eduseekindia.com" style="color:rgba(243,245,237,0.7); text-decoration:none;">info@eduseekindia.com</a>
+                &nbsp;&middot;&nbsp;
+                <a href="tel:+917034988630" style="color:rgba(243,245,237,0.7); text-decoration:none;">+91 703 498 8630</a>
+              </p>
+              <p style="margin:0; font-size:12px; line-height:1.6; color:rgba(243,245,237,0.55); text-align:center;">
+                EduSeek Institute, India
+              </p>
+            </td>
+          </tr>
+
+          <!-- Social row — centered as a single inline-block table -->
+          <tr>
+            <td class="px-pad social" style="padding:6px 40px 14px 40px; text-align:center;" align="center">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto;">
+                <tr>
+                  <td style="padding:0 5px;">
+                    <a href="https://www.instagram.com/eduseekindia?igsh=ankxMmhwdGpoa3c3" style="display:inline-block; padding:8px 14px; font-size:12px; font-weight:600; color:rgba(243,245,237,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:999px; background-color:rgba(255,255,255,0.04);">
+                      Instagram
+                    </a>
+                  </td>
+                  <td style="padding:0 5px;">
+                    <a href="#" style="display:inline-block; padding:8px 14px; font-size:12px; font-weight:600; color:rgba(243,245,237,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:999px; background-color:rgba(255,255,255,0.04);">
+                      Facebook
+                    </a>
+                  </td>
+                  <td style="padding:0 5px;">
+                    <a href="#" style="display:inline-block; padding:8px 14px; font-size:12px; font-weight:600; color:rgba(243,245,237,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:999px; background-color:rgba(255,255,255,0.04);">
+                      YouTube
+                    </a>
+                  </td>
+                  <td style="padding:0 5px;">
+                    <a href="#" style="display:inline-block; padding:8px 14px; font-size:12px; font-weight:600; color:rgba(243,245,237,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:999px; background-color:rgba(255,255,255,0.04);">
+                      LinkedIn
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Legal -->
+          <tr>
+            <td class="px-pad" style="padding:14px 40px 10px 40px; text-align:center;" align="center">
+              <p style="margin:0; font-size:11px; line-height:1.6; color:rgba(243,245,237,0.4); text-align:center;">
+                You're receiving this because you submitted an enquiry on the EduSeek website. If this wasn't you, simply ignore this message.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="px-pad" style="padding:6px 40px 28px 40px; text-align:center;" align="center">
+              <p style="margin:0; font-size:11px; line-height:1.6; color:rgba(243,245,237,0.4); text-align:center;">
+                &copy; <span>2026</span> EduSeekIndia. All rights reserved.
+              </p>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

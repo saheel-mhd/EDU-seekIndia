@@ -1,0 +1,19 @@
+# EduSeek India — robots.txt
+# Allow all known good crawlers full access; advertise the sitemap.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Common AI crawlers — uncomment to block if you don't want training-set use.
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: ClaudeBot
+# Disallow: /
+# User-agent: CCBot
+# Disallow: /
+# User-agent: Google-Extended
+# Disallow: /
+
+Sitemap: https://eduseekindia.com/sitemap.xml
+Host: https://eduseekindia.com

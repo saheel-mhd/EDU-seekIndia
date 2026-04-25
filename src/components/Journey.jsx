@@ -56,12 +56,6 @@ export default function Journey() {
     <section id="journey" className="section">
       <div className="container-x relative">
         <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
-            <span className="eyebrow">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-red" />
-              The Student Journey
-            </span>
-          </Reveal>
           <Reveal delay={0.1}>
             <h2 className="section-title mt-5">
               A thoughtful five step path from{" "}

@@ -1,18 +1,31 @@
-import { Instagram, Facebook, Youtube, Linkedin, ArrowUpRight } from "lucide-react";
+import {
+  Instagram,
+  Facebook,
+  Youtube,
+  Linkedin,
+  ArrowUpRight,
+} from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "./primitives/Logo.jsx";
 
-const NAV = [
-  { href: "#about", label: "About" },
-  { href: "#problem", label: "Why Us" },
-  { href: "#approach", label: "Approach" },
-  { href: "#skills", label: "Skills" },
-  { href: "#journey", label: "Journey" },
-  { href: "#vision", label: "Vision" },
-  { href: "#contact", label: "Enquire" },
+// In-page section anchors. These scroll on the home page; from any other
+// page they navigate back to home and let Home.jsx scroll to the hash.
+const SECTION_NAV = [
+  { hash: "about", label: "About" },
+  { hash: "problem", label: "Why Us" },
+  { hash: "approach", label: "Approach" },
+  { hash: "skills", label: "Skills" },
+  { hash: "journey", label: "Journey" },
+  { hash: "vision", label: "Vision" },
+  { hash: "faq", label: "FAQ" },
 ];
 
 const SOCIALS = [
-  { icon: Instagram, label: "Instagram", href: "#" },
+  {
+    icon: Instagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/eduseekindia?igsh=ankxMmhwdGpoa3c3",
+  },
   { icon: Facebook, label: "Facebook", href: "#" },
   { icon: Youtube, label: "YouTube", href: "#" },
   { icon: Linkedin, label: "LinkedIn", href: "#" },
@@ -20,6 +33,21 @@ const SOCIALS = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
+
+  const handleSectionClick = (hash) => (e) => {
+    e.preventDefault();
+    if (isHome) {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(null, "", `#${hash}`);
+    } else {
+      navigate(`/#${hash}`);
+    }
+  };
+
   return (
     <footer className="relative overflow-hidden pt-24">
       {/* Top glow border */}
@@ -32,7 +60,9 @@ export default function Footer() {
       <div className="container-x pb-10 pt-16">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Logo size="sm" />
+            <Link to="/" aria-label="EduSeek home">
+              <Logo size="sm" />
+            </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-brand-light/70">
               EduSeek is a new kind of learning home, built to help every
               child discover who they are, build real world skills, and step
@@ -62,10 +92,11 @@ export default function Footer() {
                 Explore
               </div>
               <ul className="mt-4 space-y-2.5">
-                {NAV.map((n) => (
-                  <li key={n.href}>
+                {SECTION_NAV.map((n) => (
+                  <li key={n.hash}>
                     <a
-                      href={n.href}
+                      href={`/#${n.hash}`}
+                      onClick={handleSectionClick(n.hash)}
                       className="group inline-flex items-center gap-1.5 text-sm text-brand-light/80 transition-colors hover:text-brand-yellow"
                     >
                       {n.label}
@@ -76,6 +107,18 @@ export default function Footer() {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    to="/enquire"
+                    className="group inline-flex items-center gap-1.5 text-sm text-brand-light/80 transition-colors hover:text-brand-yellow"
+                  >
+                    Enquire
+                    <ArrowUpRight
+                      size={14}
+                      className="opacity-0 transition-all duration-300 group-hover:opacity-100"
+                    />
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -97,8 +140,22 @@ export default function Footer() {
                 Reach Us
               </div>
               <ul className="mt-4 space-y-2.5 text-sm text-brand-light/80">
-                <li>info@eduseekindia.com</li>
-                <li>+91 703 498 8630</li>
+                <li>
+                  <a
+                    href="mailto:info@eduseekindia.com"
+                    className="transition-colors hover:text-brand-yellow"
+                  >
+                    info@eduseekindia.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+917034988630"
+                    className="transition-colors hover:text-brand-yellow"
+                  >
+                    +91 703 498 8630
+                  </a>
+                </li>
                 <li>EduSeek Institute, India</li>
               </ul>
             </div>
@@ -110,24 +167,24 @@ export default function Footer() {
         <div className="mt-6 flex flex-col items-start justify-between gap-3 text-xs text-brand-light/50 sm:flex-row sm:items-center">
           <div>© {year} EduSeek. Learning beyond textbooks.</div>
           <div className="flex items-center gap-5">
-            <a
-              href="#"
+            <Link
+              to="/privacy"
               className="transition-colors hover:text-brand-light"
             >
               Privacy
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/terms"
               className="transition-colors hover:text-brand-light"
             >
               Terms
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              to="/enquire"
               className="transition-colors hover:text-brand-yellow"
             >
               Enquire
-            </a>
+            </Link>
           </div>
         </div>
       </div>

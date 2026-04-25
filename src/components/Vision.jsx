@@ -37,12 +37,6 @@ export default function Vision() {
 
       <div className="container-x relative z-10">
         <div className="mx-auto max-w-5xl text-center">
-          <Reveal>
-            <span className="eyebrow">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
-              Our Vision
-            </span>
-          </Reveal>
 
           <Reveal delay={0.1}>
             <h2 className="mt-8 font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-brand-light sm:text-6xl lg:text-[5rem]">

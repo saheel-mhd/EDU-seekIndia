@@ -205,8 +205,43 @@ body {
     background: rgba(255, 255, 255, 0.07);
   }
 
+  /* Validation error variant for input-field. */
+  .input-field.input-error {
+    border-color: rgba(235, 67, 49, 0.6);
+    background: rgba(235, 67, 49, 0.06);
+  }
+  .input-field.input-error:focus {
+    border-color: rgba(235, 67, 49, 0.85);
+    box-shadow: 0 0 0 4px rgba(235, 67, 49, 0.16);
+  }
+
   .label {
     @apply mb-2 block text-xs font-medium uppercase tracking-[0.16em] text-brand-light/60;
+  }
+
+  /* Long-form prose styling for Privacy / Terms / similar pages. */
+  .legal-prose h2 {
+    @apply font-display text-2xl font-bold text-brand-light md:text-3xl;
+    margin-top: 2rem;
+  }
+  .legal-prose h3 {
+    @apply font-display text-lg font-semibold text-brand-light md:text-xl;
+    margin-top: 1.5rem;
+  }
+  .legal-prose p {
+    @apply text-base leading-relaxed text-brand-light/80;
+  }
+  .legal-prose a {
+    @apply text-brand-yellow underline-offset-4 hover:underline;
+  }
+  .legal-prose ul {
+    @apply list-disc space-y-2 pl-6 text-brand-light/80;
+  }
+  .legal-prose li {
+    @apply leading-relaxed;
+  }
+  .legal-prose strong {
+    @apply font-semibold text-brand-light;
   }
 }
 

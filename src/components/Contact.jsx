@@ -12,6 +12,35 @@ import {
 } from "lucide-react";
 import Reveal from "./primitives/Reveal.jsx";
 
+/**
+ * Build an idempotency key in the EduSeek API format:
+ *   idempotency-DD-MM-YYYY-HH-MM-SS
+ * The API uses this so duplicate-submitted requests (network retries,
+ * double-clicks) are processed once. We generate a fresh key per submit
+ * attempt so a manual retry after a real failure is treated as new.
+ */
+function buildIdempotencyKey() {
+  const d = new Date();
+  const pad = (n) => String(n).padStart(2, "0");
+  return [
+    "idempotency",
+    pad(d.getDate()),
+    pad(d.getMonth() + 1),
+    d.getFullYear(),
+    pad(d.getHours()),
+    pad(d.getMinutes()),
+    pad(d.getSeconds()),
+  ].join("-");
+}
+
+// We POST to a relative path. The Vite dev plugin (see vite.config.js)
+// — and the equivalent serverless function in production — receives the
+// payload, replies 202 immediately so the form feels instant, then
+// forwards the call to the upstream email API in the background. The
+// bearer token never leaves the server, so we don't send Authorization
+// from here.
+const API_URL = "/api/send-welcome-mail";
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -22,20 +51,97 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [errors, setErrors] = useState({});
 
-  const handleChange = (e) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  // Field-level validation. Phone & message are optional. Name, email,
+  // and child age are required. Empty / unsatisfied fields return a
+  // friendly message; satisfied fields are absent from the result.
+  const validate = (values) => {
+    const e = {};
+    if (!values.name.trim()) {
+      e.name = "Please enter your name.";
+    }
+
+    if (!values.email.trim()) {
+      e.email = "Please enter your email address.";
+    } else if (!/^\S+@\S+\.\S+$/.test(values.email.trim())) {
+      e.email = "That email doesn't look right.";
+    }
+
+    const ageNum = Number(values.age);
+    if (!values.age.toString().trim()) {
+      e.age = "Please enter your child's age.";
+    } else if (!Number.isFinite(ageNum) || ageNum < 3 || ageNum > 25) {
+      e.age = "Age should be a number between 3 and 25.";
+    }
+
+    return e;
   };
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+    // Clear the field's error as soon as the user edits it again so
+    // they get immediate, encouraging feedback instead of nagging.
+    setErrors((prev) => {
+      if (!prev[name]) return prev;
+      const { [name]: _removed, ...rest } = prev;
+      return rest;
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
+    const fieldErrors = validate(form);
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
+      // Move keyboard focus to the first invalid field for accessibility.
+      const firstInvalid = Object.keys(fieldErrors)[0];
+      const el = document.getElementById(firstInvalid);
+      if (el && typeof el.focus === "function") el.focus();
+      return;
+    }
+
+    setErrors({});
+    setErrorMsg("");
     setLoading(true);
-    // Simulate async submit (replace with real endpoint later)
-    setTimeout(() => {
-      setLoading(false);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idempotencyKey: buildIdempotencyKey(),
+          to: [form.email],
+          variables: {
+            name: form.name,
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        const text = await response.text().catch(() => "");
+        throw new Error(
+          `Request failed (${response.status}). ${text || "Please try again."}`
+        );
+      }
+
       setSubmitted(true);
       setForm({ name: "", email: "", phone: "", age: "", message: "" });
-    }, 900);
+      setErrors({});
+    } catch (err) {
+      setErrorMsg(
+        err?.message ||
+          "We couldn't send your enquiry just now. Please try again in a moment."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -44,12 +150,6 @@ export default function Contact() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left column — copy & details */}
           <div className="lg:col-span-5">
-            <Reveal>
-              <span className="eyebrow">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-blue" />
-                Start the Conversation
-              </span>
-            </Reveal>
             <Reveal delay={0.1}>
               <h2 className="section-title mt-5">
                 Begin your child's{" "}
@@ -173,13 +273,26 @@ export default function Contact() {
                             id="name"
                             name="name"
                             type="text"
-                            required
                             value={form.name}
                             onChange={handleChange}
                             placeholder="e.g. Anjali Sharma"
-                            className="input-field pl-11"
+                            aria-invalid={Boolean(errors.name)}
+                            aria-describedby={
+                              errors.name ? "name-error" : undefined
+                            }
+                            className={`input-field pl-11 ${
+                              errors.name ? "input-error" : ""
+                            }`}
                           />
                         </div>
+                        {errors.name && (
+                          <p
+                            id="name-error"
+                            className="mt-2 text-xs text-brand-red"
+                          >
+                            {errors.name}
+                          </p>
+                        )}
                       </div>
 
                       <div>
@@ -196,13 +309,26 @@ export default function Contact() {
                             id="email"
                             name="email"
                             type="email"
-                            required
                             value={form.email}
                             onChange={handleChange}
                             placeholder="you@example.com"
-                            className="input-field pl-11"
+                            aria-invalid={Boolean(errors.email)}
+                            aria-describedby={
+                              errors.email ? "email-error" : undefined
+                            }
+                            className={`input-field pl-11 ${
+                              errors.email ? "input-error" : ""
+                            }`}
                           />
                         </div>
+                        {errors.email && (
+                          <p
+                            id="email-error"
+                            className="mt-2 text-xs text-brand-red"
+                          >
+                            {errors.email}
+                          </p>
+                        )}
                       </div>
 
                       <div>
@@ -247,9 +373,23 @@ export default function Contact() {
                             value={form.age}
                             onChange={handleChange}
                             placeholder="e.g. 10"
-                            className="input-field pl-11"
+                            aria-invalid={Boolean(errors.age)}
+                            aria-describedby={
+                              errors.age ? "age-error" : undefined
+                            }
+                            className={`input-field pl-11 ${
+                              errors.age ? "input-error" : ""
+                            }`}
                           />
                         </div>
+                        {errors.age && (
+                          <p
+                            id="age-error"
+                            className="mt-2 text-xs text-brand-red"
+                          >
+                            {errors.age}
+                          </p>
+                        )}
                       </div>
 
                       <div className="sm:col-span-2">
@@ -273,6 +413,16 @@ export default function Contact() {
                           />
                         </div>
                       </div>
+
+                      {errorMsg && (
+                        <div
+                          role="alert"
+                          aria-live="polite"
+                          className="sm:col-span-2 rounded-2xl border border-brand-red/40 bg-brand-red/10 px-4 py-3 text-sm text-brand-light"
+                        >
+                          {errorMsg}
+                        </div>
+                      )}
 
                       <div className="sm:col-span-2 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <p className="text-xs text-brand-light/50">
@@ -307,7 +457,7 @@ export default function Contact() {
             </Reveal>
           </div>
         </div>
-      </div>
+      </div> 
     </section>
   );
 }

@@ -9,12 +9,6 @@ export default function About() {
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Left column */}
           <div className="lg:col-span-6">
-            <Reveal direction="up">
-              <span className="eyebrow">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
-                Our Origin
-              </span>
-            </Reveal>
 
             <Reveal direction="up" delay={0.1}>
               <h2 className="section-title mt-5">

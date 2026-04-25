@@ -43,12 +43,6 @@ export default function Problem() {
     <section id="problem" className="section">
       <div className="container-x relative">
         <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
-            <span className="eyebrow">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-red" />
-              What's Missing Today
-            </span>
-          </Reveal>
           <Reveal delay={0.1}>
             <h2 className="section-title mt-5">
               Traditional classrooms teach a lot{" "}

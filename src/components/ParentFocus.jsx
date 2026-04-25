@@ -43,12 +43,6 @@ export default function ParentFocus() {
         <div className="grid items-start gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Left — emotive copy */}
           <div className="lg:col-span-5">
-            <Reveal>
-              <span className="eyebrow">
-                <HeartHandshake size={14} className="text-brand-red" />
-                For Parents
-              </span>
-            </Reveal>
             <Reveal delay={0.1}>
               <h2 className="section-title mt-5">
                 You know your child better than anyone.{" "}

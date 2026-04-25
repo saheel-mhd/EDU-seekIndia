@@ -63,12 +63,6 @@ export default function Approach() {
 
       <div className="container-x relative">
         <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
-            <span className="eyebrow">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-blue" />
-              Our Approach
-            </span>
-          </Reveal>
           <Reveal delay={0.1}>
             <h2 className="section-title mt-5">
               Six pillars that turn{" "}
