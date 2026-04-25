@@ -1,53 +1,316 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
+    <!-- ============================================================
+         CORE
+         ============================================================ -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#231C1E" />
+    <meta name="color-scheme" content="dark light" />
 
-    <!-- Favicons (from /public) -->
+    <!-- Canonical URL — prevents duplicate-content penalties when the
+         site is reachable on multiple hosts (www, non-www, http, https). -->
+    <link rel="canonical" href="https://eduseekindia.com/" />
+
+    <!-- ============================================================
+         CRAWLER DIRECTIVES
+         ============================================================ -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+
+    <!-- ============================================================
+         TITLE & DESCRIPTION  (the heaviest SEO signals on the page)
+         ============================================================ -->
+    <title>EduSeek India — Skill Discovery School for Every Child | Learning Beyond Textbooks</title>
+
+    <meta
+      name="description"
+      content="EduSeek is a new kind of school in India that helps every child discover real-world skills, confidence, and creativity — learning beyond textbooks and exams."
+    />
+
+    <!-- Bing/Yandex still read this. Google ignores it but it doesn't hurt. -->
+    <meta
+      name="keywords"
+      content="EduSeek, Edu Seek, EduSeek India, EduSeekIndia, EduSeek AI, EduSeekAI, Edu Seek AI, Edu Seek Learning, Eduseak, Edu Seedk AI, skill school, skill discovery school, school in India, Indian education, real-world skills, learning beyond textbooks, future skills education, alternative school India, child skill development, mentorship school, communication skills children, leadership skills students, creativity school, critical thinking education"
+    />
+
+    <meta name="author" content="EduSeek India" />
+    <meta name="publisher" content="EduSeek India" />
+    <meta name="copyright" content="EduSeek India" />
+
+    <!-- Geo / language targeting (India) -->
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.placename" content="India" />
+    <meta name="language" content="English" />
+    <meta http-equiv="content-language" content="en-IN" />
+    <link rel="alternate" hreflang="en-IN" href="https://eduseekindia.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://eduseekindia.com/" />
+
+    <!-- ============================================================
+         OPEN GRAPH (Facebook, LinkedIn, WhatsApp, Slack previews)
+         ============================================================ -->
+    <meta property="og:site_name" content="EduSeek India" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:url" content="https://eduseekindia.com/" />
+    <meta
+      property="og:title"
+      content="EduSeek India — Skill Discovery School for Every Child"
+    />
+    <meta
+      property="og:description"
+      content="EduSeek helps every child discover their strengths and build real-world skills — communication, leadership, creativity, technology, problem-solving, and more. Learning beyond textbooks."
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/dzaws4mwh/image/upload/c_pad,w_1200,h_630,b_rgb:0f0c0d/v1777100640/Screenshot_2026-04-24_150752_md3wcn.png"
+    />
+    <meta property="og:image:alt" content="EduSeek India — Learning Beyond Textbooks" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- ============================================================
+         TWITTER / X CARDS
+         ============================================================ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@eduseekindia" />
+    <meta name="twitter:creator" content="@eduseekindia" />
+    <meta
+      name="twitter:title"
+      content="EduSeek India — Skill Discovery School for Every Child"
+    />
+    <meta
+      name="twitter:description"
+      content="A new kind of school in India that helps every child build real-world skills — communication, leadership, creativity, technology, and more."
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/dzaws4mwh/image/upload/c_pad,w_1200,h_630,b_rgb:0f0c0d/v1777100640/Screenshot_2026-04-24_150752_md3wcn.png"
+    />
+    <meta name="twitter:image:alt" content="EduSeek India — Learning Beyond Textbooks" />
+
+    <!-- ============================================================
+         FAVICONS / PWA
+         ============================================================ -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="/favicon-96x96.png"
-    />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="apple-mobile-web-app-title" content="EduSeek" />
     <meta name="application-name" content="EduSeek" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <!-- Preload the wordmark used in the header & footer -->
-    <link
-      rel="preload"
-      as="image"
-      href="/Screenshot 2026-04-24 150752.png"
-      fetchpriority="high"
-    />
-    <meta
-      name="description"
-      content="EduSeek a new kind of learning home that helps every child discover real-world skills, confidence, and creativity beyond the textbook."
-    />
-    <meta property="og:title" content="EduSeek — Learning Beyond Textbooks" />
-    <meta
-      property="og:description"
-      content="We help every child discover their strengths and build real world skills communication, leadership, creativity, technology, and more."
-    />
-    <meta property="og:type" content="website" />
-
+    <!-- ============================================================
+         RESOURCE HINTS (perf is a ranking signal)
+         ============================================================ -->
+    <link rel="preload" as="image" href="/Screenshot 2026-04-24 150752.png" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="dns-prefetch" href="https://gmail-smtp-api.onrender.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <title>EduSeek — Learning Beyond Textbooks</title>
+    <!-- ============================================================
+         STRUCTURED DATA  (schema.org via JSON-LD)
+         These three blocks teach Google what this site is, what its
+         brand variants/typos are, and how site search should appear.
+         ============================================================ -->
+
+    <!-- 1. The school itself -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "@id": "https://eduseekindia.com/#organization",
+      "name": "EduSeek",
+      "legalName": "EduSeek India",
+      "alternateName": [
+        "Edu Seek",
+        "EduSeek India",
+        "EduSeekIndia",
+        "EduSeek AI",
+        "EduSeekAI",
+        "Edu Seek AI",
+        "Edu Seek Learning",
+        "Eduseak",
+        "Edu Seedk AI"
+      ],
+      "url": "https://eduseekindia.com/",
+      "logo": "https://res.cloudinary.com/dzaws4mwh/image/upload/v1777100640/Screenshot_2026-04-24_150752_md3wcn.png",
+      "image": "https://res.cloudinary.com/dzaws4mwh/image/upload/c_pad,w_1200,h_630,b_rgb:0f0c0d/v1777100640/Screenshot_2026-04-24_150752_md3wcn.png",
+      "description": "EduSeek is a new kind of school in India that helps every child discover real-world skills, confidence, and creativity — learning beyond textbooks and exams.",
+      "slogan": "Learning Beyond Textbooks",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN",
+        "addressRegion": "India"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "info@eduseekindia.com",
+          "telephone": "+91-703-498-8630",
+          "areaServed": "IN",
+          "availableLanguage": ["English", "Hindi"]
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/eduseekindia"
+      ],
+      "knowsAbout": [
+        "Skill discovery for children",
+        "Real-world skills education",
+        "Communication skills",
+        "Leadership development",
+        "Creativity",
+        "Critical thinking",
+        "Problem-solving",
+        "Collaboration",
+        "Confidence building",
+        "Mentorship",
+        "Personalized learning"
+      ]
+    }
+    </script>
+
+    <!-- 2. The website (enables Google sitelinks search box) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://eduseekindia.com/#website",
+      "url": "https://eduseekindia.com/",
+      "name": "EduSeek India",
+      "alternateName": ["EduSeek", "Edu Seek", "EduSeek AI", "EduSeekAI", "EduSeekIndia"],
+      "description": "Skill discovery school for every child — learning beyond textbooks.",
+      "publisher": { "@id": "https://eduseekindia.com/#organization" },
+      "inLanguage": "en-IN"
+    }
+    </script>
+
+    <!-- 3. FAQ rich result.  Answer text MUST match what's rendered on
+            the page (src/components/FAQ.jsx). -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://eduseekindia.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is EduSeek?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EduSeek is a new kind of learning home in India, built to help every child discover real world skills communication, leadership, creativity, technology, problem-solving, and more — alongside the academics they study at school."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is EduSeek for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EduSeek is designed for young learners and their parents. We work with children across primary and secondary school years, shaping each journey around the child's strengths, interests, and pace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is EduSeek different from a traditional school?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Traditional schools focus on syllabus and exams and they do that well. EduSeek adds what those systems often miss: skill discovery, mentorship, hands-on projects, and a personalized growth path that helps children build the abilities life rewards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What kinds of skills will my child develop here?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Communication, leadership, creativity, technology, problem-solving, an entrepreneurship mindset, critical thinking, and collaboration. We treat these as core skills, practiced steadily over time — not as side activities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does EduSeek replace my child's regular school?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. EduSeek is meant to work alongside your child's school. We're the place where the skills schools rarely have time to teach are nurtured — without taking anything away from their academic life."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How will I know my child is making progress?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Parents stay close to the journey. We share regular updates from mentors, showcase project work, and host moments where your child can present what they've built. Growth is celebrated openly — not measured by a single number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are mentors at EduSeek selected?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our mentors are chosen for warmth, patience, and real-world experience in the skill they guide. Every mentor commits to listening before teaching — the same value EduSeek was built on."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do we get started?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tell us a little about your child through the enquiry form below. A mentor from the EduSeek team will reach out personally to understand them better — their curiosities, their strengths, and what they love. From there, we walk the path together."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- 4. The home page itself -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://eduseekindia.com/#webpage",
+      "url": "https://eduseekindia.com/",
+      "name": "EduSeek India — Skill Discovery School for Every Child",
+      "isPartOf": { "@id": "https://eduseekindia.com/#website" },
+      "about": { "@id": "https://eduseekindia.com/#organization" },
+      "inLanguage": "en-IN",
+      "primaryImageOfPage": "https://res.cloudinary.com/dzaws4mwh/image/upload/c_pad,w_1200,h_630,b_rgb:0f0c0d/v1777100640/Screenshot_2026-04-24_150752_md3wcn.png",
+      "description": "EduSeek is a new kind of school in India that helps every child discover real-world skills, confidence, and creativity — learning beyond textbooks and exams.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eduseekindia.com/" }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Fallback content visible to crawlers that don't run JavaScript -->
+    <noscript>
+      <div style="padding:2rem;font-family:sans-serif;color:#F3F5ED;background:#0f0c0d;min-height:100vh;">
+        <h1>EduSeek India — Skill Discovery School for Every Child</h1>
+        <p>EduSeek is a new kind of school in India that helps every child discover real-world skills, confidence, and creativity — learning beyond textbooks and exams.</p>
+        <p>Please enable JavaScript to view the full experience, or contact us at
+          <a style="color:#F8BF40" href="mailto:info@eduseekindia.com">info@eduseekindia.com</a>.</p>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

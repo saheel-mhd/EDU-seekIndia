@@ -1,35 +1,32 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
-import Hero from "./components/Hero.jsx";
-import About from "./components/About.jsx";
-import Problem from "./components/Problem.jsx";
-import Approach from "./components/Approach.jsx";
-import Skills from "./components/Skills.jsx";
-import ParentFocus from "./components/ParentFocus.jsx";
-import Journey from "./components/Journey.jsx";
-import Vision from "./components/Vision.jsx";
-import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
-import Marquee from "./components/Marquee.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
+import Home from "./pages/Home.jsx";
+import Privacy from "./pages/Privacy.jsx";
+import Terms from "./pages/Terms.jsx";
+import Enquire from "./pages/Enquire.jsx";
 
 export default function App() {
   return (
-    <div className="relative min-h-screen">
-      <ScrollProgress />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Problem />
-        <Approach />
-        <Marquee />
-        <Skills />
-        <ParentFocus />
-        <Journey />
-        <Vision />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="relative min-h-screen">
+        <ScrollProgress />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/enquire" element={<Enquire />} />
+            {/* Anything else falls back to home. */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }

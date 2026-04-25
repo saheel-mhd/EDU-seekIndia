@@ -19,7 +19,7 @@ export default function Logo({
   return (
     <img
       src={LOGO_SRC}
-      alt="Edu Seek"
+      alt="EduSeek India — Skill Discovery School"
       className={`shrink-0 select-none object-contain transition-transform duration-500 hover:scale-[1.03] ${sizes[size]} ${className}`}
       width={256}
       height={104}

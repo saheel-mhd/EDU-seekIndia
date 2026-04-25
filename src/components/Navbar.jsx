@@ -1,24 +1,34 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "./primitives/Logo.jsx";
 
 const LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#problem", label: "Why Us" },
-  { href: "#approach", label: "Approach" },
-  { href: "#skills", label: "Skills" },
-  { href: "#journey", label: "Journey" },
-  { href: "#vision", label: "Vision" },
+  { hash: "about", label: "About" },
+  { hash: "problem", label: "Why Us" },
+  { hash: "approach", label: "Approach" },
+  { hash: "skills", label: "Skills" },
+  { hash: "journey", label: "Journey" },
+  { hash: "vision", label: "Vision" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
-    const ids = LINKS.map((l) => l.href.replace("#", ""));
+    if (!isHome) {
+      // Scroll-spy is meaningless on non-home pages — clear it.
+      setActive("");
+      return;
+    }
+
+    const ids = LINKS.map((l) => l.hash);
     let ticking = false;
     let lastScrolled = false;
     let lastActive = "";
@@ -37,7 +47,7 @@ export default function Navbar() {
         if (!el) continue;
         const rect = el.getBoundingClientRect();
         if (rect.top <= 140 && rect.bottom >= 140) {
-          next = `#${id}`;
+          next = id;
           break;
         }
       }
@@ -57,7 +67,13 @@ export default function Navbar() {
     run();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
+
+  // Set the "scrolled" pill state immediately on non-home pages so the
+  // navbar always looks pinned/elevated above the legal pages.
+  useEffect(() => {
+    if (!isHome) setScrolled(true);
+  }, [isHome]);
 
   // Prevent body scroll when mobile menu open
   useEffect(() => {
@@ -66,6 +82,23 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // Click handler for in-page section links. On the home page we scroll
+  // smoothly to the section; on any other page we navigate home and let
+  // Home.jsx's mount-time hash handler do the scroll.
+  const handleSectionClick = (hash) => (e) => {
+    setOpen(false);
+    if (isHome) {
+      e.preventDefault();
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Update the URL hash without page jump.
+      window.history.replaceState(null, "", `#${hash}`);
+    } else {
+      e.preventDefault();
+      navigate(`/#${hash}`);
+    }
+  };
 
   return (
     <>
@@ -86,22 +119,23 @@ export default function Navbar() {
             }`}
             aria-label="Primary"
           >
-            <a
-              href="#top"
+            <Link
+              to="/"
               className="rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow"
               aria-label="EduSeek home"
             >
               <Logo size="sm" />
-            </a>
+            </Link>
 
             {/* Desktop links */}
             <ul className="hidden items-center gap-1 lg:flex">
               {LINKS.map((link) => (
-                <li key={link.href}>
+                <li key={link.hash}>
                   <a
-                    href={link.href}
+                    href={`/#${link.hash}`}
+                    onClick={handleSectionClick(link.hash)}
                     className={`group relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                      active === link.href
+                      active === link.hash
                         ? "text-brand-yellow"
                         : "text-brand-light/80 hover:text-brand-light"
                     }`}
@@ -109,7 +143,7 @@ export default function Navbar() {
                     {link.label}
                     <span
                       className={`pointer-events-none absolute inset-x-3 -bottom-0.5 h-[2px] origin-left rounded-full bg-gradient-to-r from-brand-yellow via-brand-red to-brand-blue transition-transform duration-500 ${
-                        active === link.href
+                        active === link.hash
                           ? "scale-x-100"
                           : "scale-x-0 group-hover:scale-x-100"
                       }`}
@@ -120,8 +154,8 @@ export default function Navbar() {
             </ul>
 
             <div className="flex items-center gap-3">
-              <a
-                href="#contact"
+              <Link
+                to="/enquire"
                 className="group hidden items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-semibold text-brand-light transition-all duration-300 hover:border-brand-yellow/60 hover:bg-brand-yellow/10 md:inline-flex"
               >
                 Enquire Now
@@ -129,7 +163,7 @@ export default function Navbar() {
                   size={16}
                   className="transition-transform duration-300 group-hover:translate-x-0.5"
                 />
-              </a>
+              </Link>
 
               {/* Mobile toggle */}
               <button
@@ -195,14 +229,14 @@ export default function Navbar() {
               <ul className="flex flex-col gap-1">
                 {LINKS.map((link, i) => (
                   <motion.li
-                    key={link.href}
+                    key={link.hash}
                     initial={{ opacity: 0, x: 16 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.05 * i, duration: 0.3 }}
                   >
                     <a
-                      href={link.href}
-                      onClick={() => setOpen(false)}
+                      href={`/#${link.hash}`}
+                      onClick={handleSectionClick(link.hash)}
                       className="flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-base font-medium text-brand-light/90 transition-all duration-300 hover:border-white/10 hover:bg-white/5 hover:text-brand-yellow"
                     >
                       {link.label}
@@ -211,14 +245,14 @@ export default function Navbar() {
                   </motion.li>
                 ))}
               </ul>
-              <a
-                href="#contact"
+              <Link
+                to="/enquire"
                 onClick={() => setOpen(false)}
                 className="btn-primary mt-5 w-full"
               >
                 Enquire Now
                 <ArrowRight size={16} />
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
         )}
