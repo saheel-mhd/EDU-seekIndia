@@ -307,7 +307,7 @@ export default function Contact() {
             </Reveal>
           </div>
         </div>
-      </div>
+      </div> 
     </section>
   );
 }
