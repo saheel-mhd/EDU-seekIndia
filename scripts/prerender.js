@@ -162,10 +162,33 @@ async function main() {
     await waitForServerReady(ORIGIN);
     console.log("[prerender] vite preview ready");
 
-    const browser = await puppeteer.launch({
-      headless: "new",
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
+    // On Vercel / AWS Lambda the build container is missing shared libs
+    // (libnspr4, libnss3, etc.) that puppeteer's bundled Chromium expects.
+    // @sparticuz/chromium ships a self-contained Chromium for those
+    // environments. Locally we keep using puppeteer's bundled Chromium.
+    const isServerless = !!(
+      process.env.VERCEL ||
+      process.env.AWS_LAMBDA_FUNCTION_VERSION ||
+      process.env.AWS_EXECUTION_ENV
+    );
+
+    let launchOptions;
+    if (isServerless) {
+      console.log("[prerender] serverless env detected, using @sparticuz/chromium");
+      const chromium = (await import("@sparticuz/chromium")).default;
+      launchOptions = {
+        args: chromium.args,
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
+      };
+    } else {
+      launchOptions = {
+        headless: "new",
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      };
+    }
+
+    const browser = await puppeteer.launch(launchOptions);
     console.log("[prerender] chromium launched, snapshotting routes…");
 
     for (const route of ROUTES) {
