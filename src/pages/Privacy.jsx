@@ -135,7 +135,7 @@ export default function Privacy() {
           <a href="mailto:info@eduseekindia.com">info@eduseekindia.com</a>
         </li>
         <li>
-          Phone: <a href="tel:+917034988630">+91 703 498 8630</a>
+          Phone: <a href="tel:+919747070636">+91 974 7070 636</a>
         </li>
         <li>EduSeek Institute, India</li>
       </ul>
