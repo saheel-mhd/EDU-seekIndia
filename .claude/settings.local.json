@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(npx vite *)",
+      "Bash(dir public *)",
+      "Bash(node -e \"const html = require\\('fs'\\).readFileSync\\('dist/skills/communication/index.html','utf8'\\); const m = html.match\\(/<h1[\\\\s\\\\S]*?<\\\\/h1>/\\); console.log\\(m ? m[0].replace\\(/\\\\s+/g,' '\\).slice\\(0,300\\) : 'NONE'\\);\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const p='public/sitemap.xml';const s=fs.readFileSync\\(p,'utf8'\\).replace\\(/<lastmod>2026-04-25<\\\\/lastmod>/g,'<lastmod>2026-05-09</lastmod>'\\);fs.writeFileSync\\(p,s\\);console.log\\('updated'\\);\")",
+      "Bash(node -e \"const html = require\\('fs'\\).readFileSync\\('dist/index.html','utf8'\\); ['/skills/communication','/skills/leadership','/skills/creativity','/skills/technology','/skills/problem-solving'].forEach\\(p => console.log\\(p, '→', html.includes\\(p\\) ? 'present in HTML' : 'MISSING'\\)\\);\")"
     ]
   }
 }

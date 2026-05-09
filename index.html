@@ -32,10 +32,11 @@
       content="EduSeek is a new kind of school in India that helps every child discover real-world skills, confidence, and creativity — learning beyond textbooks and exams."
     />
 
-    <!-- Bing/Yandex still read this. Google ignores it but it doesn't hurt. -->
+    <!-- Bing/Yandex still read keywords; Google ignores it but it doesn't
+         hurt. Grouped by intent: branded → non-branded → pan-India / regional. -->
     <meta
       name="keywords"
-      content="EduSeek, Edu Seek, EduSeek India, EduSeekIndia, EduSeek AI, EduSeekAI, Edu Seek AI, Edu Seek Learning, Eduseak, Edu Seedk AI, skill school, skill discovery school, school in India, Indian education, real-world skills, learning beyond textbooks, future skills education, alternative school India, child skill development, mentorship school, communication skills children, leadership skills students, creativity school, critical thinking education"
+      content="EduSeek, Edu Seek, EduSeek India, EduSeekIndia, EduSeek school, EduSeek Institute, EduSeek admission, EduSeek skill discovery school, EduSeek contact number, EduSeek AI, EduSeekAI, Edu Seek AI, Edu Seek Learning, Eduseak, Edu Seedk AI, skill-based school in India, skill development school for children, creative learning school for kids, real-world skills for students, life skills school for children, alternative education India, future skills for children, talent discovery for kids, beyond textbook learning, skill discovery program for students, activity-based learning school, mentorship school for children, communication skills for children, leadership skills for students, creativity school, problem-solving school, critical thinking education, future skills school India, school in India, school in Kerala, school in Tamil Nadu, school in Karnataka, school in South India, skill development school Bangalore, skill development school Kochi, skill development school Thiruvananthapuram, skill development school Kozhikode, skill development school Chennai, skill development school Coimbatore, skill development school Mumbai, skill development school Hyderabad, skill development school Delhi, kids skill development classes India, life skills classes for children India, activity-based learning school India"
     />
 
     <meta name="author" content="EduSeek India" />
@@ -139,6 +140,9 @@
         "Edu Seek",
         "EduSeek India",
         "EduSeekIndia",
+        "EduSeek School",
+        "EduSeek Institute",
+        "EduSeek Skill Discovery School",
         "EduSeek AI",
         "EduSeekAI",
         "Edu Seek AI",
@@ -156,18 +160,35 @@
         "addressCountry": "IN",
         "addressRegion": "India"
       },
+      "areaServed": [
+        { "@type": "Country", "name": "India" },
+        { "@type": "AdministrativeArea", "name": "Kerala" },
+        { "@type": "AdministrativeArea", "name": "Tamil Nadu" },
+        { "@type": "AdministrativeArea", "name": "Karnataka" },
+        { "@type": "AdministrativeArea", "name": "Maharashtra" },
+        { "@type": "AdministrativeArea", "name": "Goa" },
+        { "@type": "AdministrativeArea", "name": "Andhra Pradesh" },
+        { "@type": "AdministrativeArea", "name": "Telangana" },
+        { "@type": "AdministrativeArea", "name": "Delhi" },
+        { "@type": "AdministrativeArea", "name": "Uttar Pradesh" },
+        { "@type": "AdministrativeArea", "name": "Himachal Pradesh" }
+      ],
       "contactPoint": [
         {
           "@type": "ContactPoint",
           "contactType": "customer support",
           "email": "info@eduseekindia.com",
-          "telephone": "+91-703-498-8630",
+          "telephone": "+91-974-707-0636",
           "areaServed": "IN",
-          "availableLanguage": ["English", "Hindi"]
+          "availableLanguage": ["English", "Hindi", "Malayalam", "Tamil"]
         }
       ],
       "sameAs": [
-        "https://www.instagram.com/eduseekindia"
+        "https://www.instagram.com/eduseekindia",
+        "https://www.facebook.com/share/1AocFCjqWR/",
+        "https://www.youtube.com/@eduseekindia",
+        "https://www.threads.com/@eduseekindia",
+        "https://x.com/eduseekindia"
       ],
       "knowsAbout": [
         "Skill discovery for children",
@@ -180,7 +201,17 @@
         "Collaboration",
         "Confidence building",
         "Mentorship",
-        "Personalized learning"
+        "Personalized learning",
+        "Skill-based school in India",
+        "Skill development school for children",
+        "Creative learning for kids",
+        "Life skills school for children",
+        "Alternative education in India",
+        "Future skills for children",
+        "Talent discovery for kids",
+        "Beyond textbook learning",
+        "Activity-based learning",
+        "Learning beyond textbooks"
       ]
     }
     </script>
@@ -301,13 +332,90 @@
   <body>
     <div id="root"></div>
 
-    <!-- Fallback content visible to crawlers that don't run JavaScript -->
+    <!--
+      Fallback content visible to crawlers and browsers that don't run JS.
+      This block is invisible to JS-enabled visitors (the React app replaces
+      <body>'s visible content), but it gives non-rendering crawlers — Bing,
+      LinkedIn, Slack, AI scrapers — real HTML to index. Keep in sync with
+      the live site copy so we never serve stale text.
+    -->
     <noscript>
-      <div style="padding:2rem;font-family:sans-serif;color:#F3F5ED;background:#0f0c0d;min-height:100vh;">
-        <h1>EduSeek India — Skill Discovery School for Every Child</h1>
-        <p>EduSeek is a new kind of school in India that helps every child discover real-world skills, confidence, and creativity — learning beyond textbooks and exams.</p>
-        <p>Please enable JavaScript to view the full experience, or contact us at
-          <a style="color:#F8BF40" href="mailto:info@eduseekindia.com">info@eduseekindia.com</a>.</p>
+      <div style="padding:2rem;font-family:'Plus Jakarta Sans',sans-serif;color:#F3F5ED;background:#0f0c0d;min-height:100vh;line-height:1.6;">
+        <header style="max-width:960px;margin:0 auto 3rem auto;">
+          <h1 style="font-size:2.25rem;line-height:1.1;margin:0 0 1rem 0;">
+            EduSeek India — Skill Discovery School for Every Child
+          </h1>
+          <p style="font-size:1.125rem;color:rgba(243,245,237,0.85);margin:0 0 1rem 0;">
+            EduSeek is a new kind of school in India that helps every child discover real-world skills, confidence, and creativity — learning beyond textbooks and exams.
+          </p>
+          <p style="font-size:1rem;color:rgba(243,245,237,0.7);margin:0;">
+            We're an educational institution built to help young learners discover their natural strengths and build the skills life rewards: communication, leadership, creativity, technology, problem-solving, an entrepreneurship mindset, critical thinking, and collaboration.
+          </p>
+        </header>
+
+        <section style="max-width:960px;margin:0 auto 3rem auto;">
+          <h2 style="font-size:1.5rem;margin:0 0 1rem 0;">Our approach</h2>
+          <p style="margin:0 0 1rem 0;color:rgba(243,245,237,0.8);">EduSeek's approach rests on six pillars:</p>
+          <ul style="padding-left:1.25rem;color:rgba(243,245,237,0.8);">
+            <li><strong>Skill Discovery</strong> — observing curiosities, listening carefully, and noticing the sparks others miss.</li>
+            <li><strong>Practical Learning</strong> — replacing rote memorization with hands-on experience.</li>
+            <li><strong>Mentorship</strong> — pairing every learner with mentors who guide, listen, and challenge gently.</li>
+            <li><strong>Real-world Projects</strong> — students build things that matter, from ideas they care about.</li>
+            <li><strong>Confidence Building</strong> — celebrating small wins, reframing setbacks.</li>
+            <li><strong>Personalized Growth Paths</strong> — shaping each journey around strengths, interests, and pace.</li>
+          </ul>
+        </section>
+
+        <section style="max-width:960px;margin:0 auto 3rem auto;">
+          <h2 style="font-size:1.5rem;margin:0 0 1rem 0;">Eight real-world skills we grow</h2>
+          <ul style="padding-left:1.25rem;color:rgba(243,245,237,0.8);">
+            <li><a style="color:#F8BF40" href="https://eduseekindia.com/skills/communication">Communication</a> — speak, listen, and connect with clarity.</li>
+            <li><a style="color:#F8BF40" href="https://eduseekindia.com/skills/leadership">Leadership</a> — lead with empathy, courage, and purpose.</li>
+            <li><a style="color:#F8BF40" href="https://eduseekindia.com/skills/creativity">Creativity</a> — think differently, express freely, make boldly.</li>
+            <li><a style="color:#F8BF40" href="https://eduseekindia.com/skills/technology">Technology</a> — build fluency with the tools of tomorrow.</li>
+            <li><a style="color:#F8BF40" href="https://eduseekindia.com/skills/problem-solving">Problem-solving</a> — break big challenges into small, clear steps.</li>
+            <li>Entrepreneurship Mindset — see opportunity, start, iterate, improve.</li>
+            <li>Critical Thinking — ask better questions before accepting answers.</li>
+            <li>Collaboration — work with others, stronger, kinder, further.</li>
+          </ul>
+        </section>
+
+        <section style="max-width:960px;margin:0 auto 3rem auto;">
+          <h2 style="font-size:1.5rem;margin:0 0 1rem 0;">Why parents choose EduSeek</h2>
+          <p style="margin:0 0 1rem 0;color:rgba(243,245,237,0.8);">
+            Traditional schools focus on syllabus and exams — and they do that well. EduSeek adds what those systems often miss: skill discovery, mentorship, hands-on projects, and a personalized growth path that helps children build the abilities life actually rewards.
+          </p>
+          <p style="margin:0;color:rgba(243,245,237,0.8);">
+            Parents stay close to the journey. We share regular updates from mentors, showcase project work, and host moments where your child can present what they've built. Growth is celebrated openly, not measured by a single number.
+          </p>
+        </section>
+
+        <section style="max-width:960px;margin:0 auto 3rem auto;">
+          <h2 style="font-size:1.5rem;margin:0 0 1rem 0;">Get in touch</h2>
+          <p style="margin:0 0 0.5rem 0;color:rgba(243,245,237,0.8);">
+            <strong>Email:</strong>
+            <a style="color:#F8BF40" href="mailto:info@eduseekindia.com">info@eduseekindia.com</a>
+          </p>
+          <p style="margin:0 0 0.5rem 0;color:rgba(243,245,237,0.8);">
+            <strong>Phone:</strong>
+            <a style="color:#F8BF40" href="tel:+919747070636">+91 974 707 0636</a>
+          </p>
+          <p style="margin:0 0 1.5rem 0;color:rgba(243,245,237,0.8);">
+            <strong>Campus:</strong> EduSeek Institute, India
+          </p>
+          <p>
+            <a style="color:#F8BF40" href="https://eduseekindia.com/enquire">Begin your child's skill discovery journey →</a>
+          </p>
+        </section>
+
+        <footer style="max-width:960px;margin:0 auto;padding-top:2rem;border-top:1px solid rgba(243,245,237,0.12);font-size:0.875rem;color:rgba(243,245,237,0.55);">
+          <p style="margin:0 0 0.5rem 0;">
+            <a style="color:rgba(243,245,237,0.7);margin-right:1rem;" href="https://eduseekindia.com/privacy">Privacy Policy</a>
+            <a style="color:rgba(243,245,237,0.7);margin-right:1rem;" href="https://eduseekindia.com/terms">Terms of Use</a>
+            <a style="color:rgba(243,245,237,0.7);" href="https://eduseekindia.com/enquire">Enquire</a>
+          </p>
+          <p style="margin:0;">© EduSeek India. Learning beyond textbooks. Please enable JavaScript for the full interactive experience.</p>
+        </footer>
       </div>
     </noscript>
 

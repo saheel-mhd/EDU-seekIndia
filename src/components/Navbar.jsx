@@ -6,11 +6,9 @@ import Logo from "./primitives/Logo.jsx";
 
 const LINKS = [
   { hash: "about", label: "About" },
-  { hash: "problem", label: "Why Us" },
   { hash: "approach", label: "Approach" },
   { hash: "skills", label: "Skills" },
   { hash: "journey", label: "Journey" },
-  { hash: "vision", label: "Vision" },
 ];
 
 export default function Navbar() {

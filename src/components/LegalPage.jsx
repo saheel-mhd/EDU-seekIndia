@@ -1,13 +1,50 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Reveal from "./primitives/Reveal.jsx";
+
+const SITE_ORIGIN = "https://eduseekindia.com";
 
 /**
  * Shared layout for Privacy & Terms pages — keeps headings, prose
  * styling, and the "back to home" link consistent across both.
  */
 export default function LegalPage({ title, eyebrow, lastUpdated, children }) {
+  const location = useLocation();
+
+  // Inject BreadcrumbList JSON-LD so search results can show the trail.
+  useEffect(() => {
+    const pageUrl = `${SITE_ORIGIN}${location.pathname}`;
+    const block = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_ORIGIN + "/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: eyebrow || title,
+          item: pageUrl,
+        },
+      ],
+    };
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.setAttribute("data-legal-jsonld", "true");
+    script.textContent = JSON.stringify(block);
+    document.head.appendChild(script);
+    return () => {
+      script.remove();
+    };
+  }, [eyebrow, title, location.pathname]);
+
   return (
     <article className="relative pt-36 pb-24 md:pt-40 md:pb-32">
       {/* Soft brand glow */}

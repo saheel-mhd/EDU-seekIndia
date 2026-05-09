@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   MessageCircle,
   Flag,
@@ -8,39 +9,48 @@ import {
   Briefcase,
   Brain,
   Handshake,
+  ArrowUpRight,
 } from "lucide-react";
 import Reveal from "./primitives/Reveal.jsx";
 
+// Skills with a `to` field have a dedicated deep-dive page; the rest
+// are listed but not yet linked. Card design / animations are unchanged
+// either way — clickable cards just become <Link> wrappers at render.
 const SKILLS = [
   {
     icon: MessageCircle,
     name: "Communication",
     tagline: "Speak, listen, and connect with clarity.",
     accent: "#516ED6",
+    to: "/skills/communication",
   },
   {
     icon: Flag,
     name: "Leadership",
     tagline: "Lead with empathy, courage, and purpose.",
     accent: "#EB4331",
+    to: "/skills/leadership",
   },
   {
     icon: Palette,
     name: "Creativity",
     tagline: "Think differently, express freely, make boldly.",
     accent: "#F8BF40",
+    to: "/skills/creativity",
   },
   {
     icon: Cpu,
     name: "Technology",
     tagline: "Build fluency with the tools of tomorrow.",
     accent: "#9B7DF2",
+    to: "/skills/technology",
   },
   {
     icon: Puzzle,
     name: "Problem solving",
     tagline: "Break big challenges into small, clear steps.",
     accent: "#2FB673",
+    to: "/skills/problem-solving",
   },
   {
     icon: Briefcase,
@@ -97,11 +107,24 @@ export default function Skills() {
                   ease: [0.22, 0.8, 0.24, 1],
                 }}
                 whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6 backdrop-blur-xl transition-all duration-500 hover:border-white/20"
+                className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6 backdrop-blur-xl transition-all duration-500 hover:border-white/20 ${
+                  s.to ? "cursor-pointer" : ""
+                }`}
                 style={{
                   boxShadow: "0 20px 50px -30px rgba(0,0,0,0.5)",
                 }}
               >
+                {/* Stretched link covers the whole card without changing its
+                    visual markup — keeps semantics correct for screen readers
+                    and gives crawlers a clean internal link to follow. */}
+                {s.to && (
+                  <Link
+                    to={s.to}
+                    aria-label={`Learn more about ${s.name}`}
+                    className="absolute inset-0 z-10"
+                  />
+                )}
+
                 {/* Glow accent on hover */}
                 <span
                   aria-hidden
@@ -115,6 +138,17 @@ export default function Skills() {
                   className="absolute -right-20 -top-20 h-40 w-40 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
                   style={{ background: s.accent }}
                 />
+
+                {/* Hover-only "open" indicator, only for linkable cards */}
+                {s.to && (
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-brand-light/60 opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
+                    style={{ color: s.accent, borderColor: `${s.accent}55` }}
+                  >
+                    <ArrowUpRight size={14} />
+                  </span>
+                )}
 
                 <div
                   className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110"
@@ -140,7 +174,7 @@ export default function Skills() {
                     style={{ background: s.accent }}
                   />
                   <span className="text-[0.65rem] uppercase tracking-[0.2em] text-brand-light/40">
-                    Core skill
+                    {s.to ? "Learn more" : "Core skill"}
                   </span>
                 </div>
               </motion.div>
