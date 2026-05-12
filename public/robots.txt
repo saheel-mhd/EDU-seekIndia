@@ -15,4 +15,4 @@ Disallow: /api/
 # User-agent: Google-Extended
 # Disallow: /
 
-Sitemap: https://eduseekindia.com/sitemap.xml
+Sitemap: https://www.eduseekindia.com/sitemap.xml
