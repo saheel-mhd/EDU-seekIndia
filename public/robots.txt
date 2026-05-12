@@ -16,4 +16,3 @@ Disallow: /api/
 # Disallow: /
 
 Sitemap: https://eduseekindia.com/sitemap.xml
-Host: https://eduseekindia.com
